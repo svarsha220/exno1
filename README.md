@@ -9,15 +9,10 @@ Data cleaning is the process of preparing data for analysis by removing or modif
 
 # Algorithm
 STEP 1: Read the given Data
-
 STEP 2: Get the information about the data
-
 STEP 3: Remove the null values from the data
-
 STEP 4: Save the Clean data to the file
-
 STEP 5: Remove outliers using IQR
-
 STEP 6: Use zscore of to remove outliers
 
 ## DATA CLEANING
@@ -29,13 +24,11 @@ data = pd.read_csv("/content/SAMPLEIDS.csv")
 data.head()
 ```
 ![image](https://github.com/svarsha220/exno1/assets/127709117/ab891d93-87db-43d3-a536-1ae61ddb1805)
-
 ```
 data = pd.get_dummies(data)
 data.isnull().sum()
 ```
 ![image](https://github.com/svarsha220/exno1/assets/127709117/32f5c820-1345-48b9-b90c-6df47ddfcf0a)
-
 ```
 columns_with_null = data.columns[data.isnull().any()]
 import seaborn as sns
@@ -45,7 +38,6 @@ plt.title("NULL VALUES")
 plt.show()
 ```
 ![image](https://github.com/svarsha220/exno1/assets/127709117/c5b290b9-e8fc-4ff8-a62a-3f69d023f613)
-
 ```
 for column in columns_with_null:
     median = data[column].median()  
@@ -53,7 +45,6 @@ for column in columns_with_null:
 data.isnull().sum().sum()
 ```
 ![image](https://github.com/svarsha220/exno1/assets/127709117/4afd8788-f4be-4344-b2ca-c16df4003229)
-
 
 ## IQR
 ```
@@ -72,7 +63,6 @@ ir.describe()
 sns.boxplot(x='sepal_width',data=ir)
 ```
 ![image](https://github.com/svarsha220/exno1/assets/127709117/dadebcec-c0a2-4aa4-9661-0d9c0c520c11)
-
 ```
 c1=ir.sepal_width.quantile(0.25)
 c3=ir.sepal_width.quantile(0.75)
@@ -80,13 +70,11 @@ iq=c3-c1
 print(c3)
 ```
 ![image](https://github.com/svarsha220/exno1/assets/127709117/6a02c574-ee45-41c2-bbde-0fd03d0c7a2a)
-
 ```
 rid=ir[((ir.sepal_width<(c1-1.5*iq))|(ir.sepal_width>(c3+1.5*iq)))]
 rid['sepal_width']
 ```
 ![image](https://github.com/svarsha220/exno1/assets/127709117/b752a2bf-02e1-4819-baa5-19fed06f0384)
-
 ```
 delid=ir[~((ir.sepal_width<(c1-1.5*iq))|(ir.sepal_width>(c3+1.5*iq)))]
 delid
@@ -97,7 +85,6 @@ delid
 sns.boxplot(x='sepal_width',data=delid)
 ```
 ![image](https://github.com/svarsha220/exno1/assets/127709117/fa9e350c-18e4-4fe8-b460-d595d42c8944)
-
 
 ## Z SCORE
 ```
