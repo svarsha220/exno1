@@ -45,7 +45,6 @@ for column in columns_with_null:
 data.isnull().sum().sum()
 ```
 ![image](https://github.com/svarsha220/exno1/assets/127709117/4afd8788-f4be-4344-b2ca-c16df4003229)
-
 ## IQR
 ```
 import pandas as pd
@@ -58,7 +57,6 @@ ir.head()
 ir.describe()
 ```
 ![image](https://github.com/svarsha220/exno1/assets/127709117/694f0b0b-da98-47d1-9270-fb6c7d09f147)
-
 ```
 sns.boxplot(x='sepal_width',data=ir)
 ```
@@ -80,12 +78,10 @@ delid=ir[~((ir.sepal_width<(c1-1.5*iq))|(ir.sepal_width>(c3+1.5*iq)))]
 delid
 ```
 ![image](https://github.com/svarsha220/exno1/assets/127709117/6dce4791-81ab-44c1-a280-1f786b6c2aa1)
-
 ```
 sns.boxplot(x='sepal_width',data=delid)
 ```
 ![image](https://github.com/svarsha220/exno1/assets/127709117/fa9e350c-18e4-4fe8-b460-d595d42c8944)
-
 ## Z SCORE
 ```
 import matplotlib.pyplot as plt
@@ -96,7 +92,6 @@ dataset=pd.read_csv("/content/heights.csv")
 dataset
 ```
 ![image](https://github.com/svarsha220/exno1/assets/127709117/5b873813-33c7-43be-b564-5d781cf05e51)
-
 ```
 df = pd.read_csv("heights.csv")
 q1 = df['height'].quantile(0.25)
@@ -108,30 +103,25 @@ iqr = q3-q1
 iqr
 ```
 ![image](https://github.com/svarsha220/exno1/assets/127709117/e825d2fd-63e5-45c0-bbf5-35371887d875)
-
 ```
 low = q1 - 1.5*iqr
 low
 ```
 ![image](https://github.com/svarsha220/exno1/assets/127709117/fd373b56-6a17-45f0-8014-9cc5756903fc)
-
 ```
 high = q3 + 1.5*iqr
 high
 ```
 ![image](https://github.com/svarsha220/exno1/assets/127709117/4d6208fa-61e6-412e-9402-32457a193600)
-
 ```
 df1 = df[((df['height'] >=low)& (df['height'] <=high))]
 df1
 ```
 ![image](https://github.com/svarsha220/exno1/assets/127709117/68195ac1-f477-41a4-9366-08408c504576)
-
 ```
 z = np.abs(stats.zscore(df['height']))
 z
 ```
 ![image](https://github.com/svarsha220/exno1/assets/127709117/018aae84-3a43-4c6c-842c-c5dffc813722)
-
 # Result
 Thus the outliers are detected and removed in the given file and the final data set is saved into the file.
